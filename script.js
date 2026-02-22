@@ -230,10 +230,3 @@ function animateConfetti() {
   requestAnimationFrame(animateConfetti);
 }
 
-
-/* ===== SURPRISE BUTTON ===== */
-function triggerSurprise() {
-  launchConfetti();
-  document.getElementById('surprise-reveal').classList.add('show');
-  document.querySelector('.surprise-btn').style.display = 'none';
-}
