@@ -1,19 +1,43 @@
+/* ===== 3D TILT EFFECT ===== */
+function initTilt(element) {
+  element.addEventListener('mousemove', (e) => {
+    const rect = element.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 10;
+    const rotateY = (centerX - x) / 10;
+
+    element.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+  });
+
+  element.addEventListener('mouseleave', () => {
+    element.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+  });
+}
+
+document.querySelectorAll('.photo-card, .special-card').forEach(initTilt);
+
 /* ============================================================
+
    BIRTHDAY SURPRISE WEBSITE — script.js
    ============================================================ */
 
 /* ===== FLOATING PARTICLES ===== */
 const particleContainer = document.getElementById('particles');
-const symbols = ['💖','🌸','✨','💫','🌷','💕','⭐','🦋','🌺','💗'];
+const symbols = ['💖', '🌸', '✨', '💫', '🌷', '💕', '⭐', '🦋', '🌺', '💗'];
 
 function createParticle() {
   const p = document.createElement('div');
   p.classList.add('particle');
   p.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-  p.style.left            = Math.random() * 100 + 'vw';
-  p.style.fontSize        = (0.8 + Math.random() * 1.2) + 'rem';
+  p.style.left = Math.random() * 100 + 'vw';
+  p.style.fontSize = (0.8 + Math.random() * 1.2) + 'rem';
   p.style.animationDuration = (8 + Math.random() * 12) + 's';
-  p.style.animationDelay  = (Math.random() * 5) + 's';
+  p.style.animationDelay = (Math.random() * 5) + 's';
   particleContainer.appendChild(p);
   setTimeout(() => p.remove(), 20000);
 }
@@ -24,8 +48,8 @@ for (let i = 0; i < 10; i++) setTimeout(createParticle, i * 300);
 
 /* ===== BACKGROUND MUSIC ===== */
 const musicBtn = document.getElementById('music-btn');
-const audio    = document.getElementById('bg-music');
-let playing    = false;
+const audio = document.getElementById('bg-music');
+let playing = false;
 
 musicBtn.addEventListener('click', () => {
   /* If no <source> has been added yet, guide the user */
@@ -46,10 +70,10 @@ musicBtn.addEventListener('click', () => {
 
 /* ===== LIGHTBOX ===== */
 function openLightbox(card) {
-  const lb        = document.getElementById('lightbox');
+  const lb = document.getElementById('lightbox');
   const container = document.getElementById('lightbox-img-container');
-  const img       = card.querySelector('img');
-  const ph        = card.querySelector('.photo-placeholder');
+  const img = card.querySelector('img');
+  const ph = card.querySelector('.photo-placeholder');
 
   container.innerHTML = '';
 
@@ -75,7 +99,7 @@ function closeLightbox() {
 }
 
 /* Close lightbox on backdrop click */
-document.getElementById('lightbox').addEventListener('click', function(e) {
+document.getElementById('lightbox').addEventListener('click', function (e) {
   if (e.target === this) closeLightbox();
 });
 
@@ -116,9 +140,9 @@ If today brings you even half the warmth you’ve brought into my life, then it 
 Here’s to more memories, more laughter, more late-night talks, and more moments that one day we’ll look back on and smile.`;
 
 let letterStarted = false;
-const letterEl    = document.getElementById('letter-text');
-const cursor      = document.createElement('span');
-cursor.className  = 'cursor';
+const letterEl = document.getElementById('letter-text');
+const cursor = document.createElement('span');
+cursor.className = 'cursor';
 
 function typeWriter(text, el, speed = 18) {
   el.textContent = '';
@@ -152,40 +176,40 @@ letterObserver.observe(document.getElementById('letter'));
 const now = new Date();
 document.getElementById('letter-date').textContent = now.toLocaleDateString('en-US', {
   weekday: 'long',
-  year:    'numeric',
-  month:   'long',
-  day:     'numeric'
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
 });
 
 
 /* ===== CONFETTI ===== */
-const canvas    = document.getElementById('confetti-canvas');
-const ctx       = canvas.getContext('2d');
-let   confettis = [];
-let   animating = false;
+const canvas = document.getElementById('confetti-canvas');
+const ctx = canvas.getContext('2d');
+let confettis = [];
+let animating = false;
 
 const confettiColors = [
-  '#F7C5D0','#E8899A','#D8C5E8','#B89ED0',
-  '#F5D5C0','#E8B898','#E8C878','#ffffff'
+  '#F7C5D0', '#E8899A', '#D8C5E8', '#B89ED0',
+  '#F5D5C0', '#E8B898', '#E8C878', '#ffffff'
 ];
 
 function launchConfetti() {
   canvas.style.display = 'block';
-  canvas.width  = window.innerWidth;
+  canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
   confettis = [];
 
   for (let i = 0; i < 200; i++) {
     confettis.push({
-      x:        Math.random() * canvas.width,
-      y:        -10 - Math.random() * 200,
-      r:        4 + Math.random() * 6,
-      color:    confettiColors[Math.floor(Math.random() * confettiColors.length)],
-      vx:       (Math.random() - 0.5) * 4,
-      vy:       2 + Math.random() * 4,
+      x: Math.random() * canvas.width,
+      y: -10 - Math.random() * 200,
+      r: 4 + Math.random() * 6,
+      color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+      vx: (Math.random() - 0.5) * 4,
+      vy: 2 + Math.random() * 4,
       rotation: Math.random() * Math.PI * 2,
-      vr:       (Math.random() - 0.5) * 0.2,
-      shape:    Math.random() > 0.5 ? 'heart' : 'circle'
+      vr: (Math.random() - 0.5) * 0.2,
+      shape: Math.random() > 0.5 ? 'heart' : 'circle'
     });
   }
 
@@ -193,8 +217,8 @@ function launchConfetti() {
 
   setTimeout(() => {
     canvas.style.display = 'none';
-    animating  = false;
-    confettis  = [];
+    animating = false;
+    confettis = [];
   }, 5000);
 }
 
@@ -203,8 +227,8 @@ function animateConfetti() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   confettis.forEach(c => {
-    c.x        += c.vx;
-    c.y        += c.vy;
+    c.x += c.vx;
+    c.y += c.vy;
     c.rotation += c.vr;
 
     ctx.save();
@@ -215,8 +239,8 @@ function animateConfetti() {
     if (c.shape === 'heart') {
       ctx.beginPath();
       ctx.moveTo(0, -c.r * 0.5);
-      ctx.bezierCurveTo( c.r, -(c.r * 1.5),  c.r * 2,  c.r * 0.5, 0,  c.r * 1.5);
-      ctx.bezierCurveTo(-c.r * 2,  c.r * 0.5, -c.r, -(c.r * 1.5), 0, -c.r * 0.5);
+      ctx.bezierCurveTo(c.r, -(c.r * 1.5), c.r * 2, c.r * 0.5, 0, c.r * 1.5);
+      ctx.bezierCurveTo(-c.r * 2, c.r * 0.5, -c.r, -(c.r * 1.5), 0, -c.r * 0.5);
       ctx.fill();
     } else {
       ctx.beginPath();
