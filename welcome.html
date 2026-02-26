@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Magical Surprise ✨</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Lato:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="welcome.css">
+</head>
+
+<body>
+    <!-- Background Sparkles Container -->
+    <div id="particles"></div>
+
+    <!-- STAGE 1: ENTRY SCREEN -->
+    <main id="stage-1" class="stage">
+        <div class="sticker-container" id="entry-trigger">
+            <div class="cute-sticker">
+                <!-- Cute Bunny SVG Illustration -->
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="bunnyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#f8f8f8;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <!-- Body -->
+                    <circle cx="100" cy="115" r="45" fill="url(#bunnyGrad)" />
+                    <!-- Head -->
+                    <circle cx="100" cy="75" r="35" fill="url(#bunnyGrad)" />
+                    <!-- Ears -->
+                    <path d="M75 55 Q60 15 90 45" stroke="#FFF" stroke-width="15" fill="none" stroke-linecap="round" />
+                    <path d="M125 55 Q140 15 110 45" stroke="#FFF" stroke-width="15" fill="none"
+                        stroke-linecap="round" />
+                    <!-- Eyes -->
+                    <circle cx="88" cy="70" r="3" fill="#333" />
+                    <circle cx="112" cy="70" r="3" fill="#333" />
+                    <!-- Cheeks -->
+                    <circle cx="80" cy="80" r="5" fill="#FFB7C5" opacity="0.4" />
+                    <circle cx="120" cy="80" r="5" fill="#FFB7C5" opacity="0.4" />
+                    <!-- Nose -->
+                    <path d="M96 78 Q100 82 104 78" stroke="#FFB7C5" stroke-width="2" fill="none" />
+                    <!-- Gift Box -->
+                    <rect x="85" y="120" width="30" height="25" rx="4" fill="#ff85a1" />
+                    <path d="M100 120 L100 145 M85 132.5 L115 132.5" stroke="#FFF" stroke-width="2" />
+                </svg>
+            </div>
+            <p class="entry-text">Click to get a surprise ✨</p>
+        </div>
+    </main>
+
+    <!-- STAGE 2: CANDLE BLOWING -->
+    <div id="stage-2" class="stage hidden">
+        <video id="cake-video" playsinline muted preload="auto" loop>
+            <source
+                src="https://assets.mixkit.co/videos/preview/mixkit-burning-birthday-candle-on-a-cake-8723-large.mp4"
+                type="video/mp4">
+        </video>
+        <div id="balloons-container"></div>
+        <div class="video-overlay">
+            <div class="candle-container" id="candle-overlay">
+                <!-- Magical SVG Candle -->
+                <svg viewBox="0 0 100 150" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="45" y="60" width="10" height="60" fill="#fff" rx="5" />
+                    <path class="flame" d="M50 20 Q65 45 50 60 Q35 45 50 20" fill="#ff6b6b">
+                        <animate attributeName="d"
+                            values="M50 20 Q65 45 50 60 Q35 45 50 20;M50 15 Q70 45 50 60 Q30 45 50 15;M50 20 Q65 45 50 60 Q35 45 50 20"
+                            dur="0.5s" repeatCount="indefinite" />
+                    </path>
+                </svg>
+            </div>
+            <h2 class="wish-text">Make a wish and blow the candle…</h2>
+        </div>
+    </div>
+
+    <!-- Assets -->
+    <canvas id="confetti-canvas"
+        style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:100;"></canvas>
+    <audio id="celebration-sound" src="https://assets.mixkit.co/active_storage/sfx/2013/2013-preview.mp3"
+        preload="auto"></audio>
+
+    <script src="welcome.js"></script>
+</body>
+
+</html>

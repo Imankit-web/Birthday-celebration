@@ -1,0 +1,299 @@
+/* ===== WELCOME CSS ===== */
+:root {
+    --pastel-pink: #ffd1dc;
+    --pastel-purple: #e2d1f9;
+    --soft-white: #fafafa;
+    --text-color: #4a4a4a;
+    --accent-color: #ff85a1;
+    --font-main: 'Lato', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background: linear-gradient(135deg, var(--pastel-pink), var(--pastel-purple));
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+/* ===== SHARED STYLES ===== */
+.stage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1.5s ease-in-out, visibility 1.5s;
+    z-index: 10;
+}
+
+.stage.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* ===== STAGE 1: ENTRY SCREEN ===== */
+#stage-1 {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+}
+
+.sticker-container {
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.sticker-container:hover {
+    transform: scale(1.05) rotate(-2deg);
+}
+
+.sticker-container:active {
+    transform: scale(0.95);
+}
+
+.cute-sticker {
+    width: 250px;
+    height: 250px;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.1));
+    margin-bottom: 2rem;
+    animation: floating 4s ease-in-out infinite;
+}
+
+.entry-text {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    letter-spacing: 1px;
+    opacity: 0.8;
+}
+
+/* ===== STAGE 2: CANDLE BLOWING ===== */
+#stage-2 {
+    background: #000;
+    /* Backdrop for video */
+}
+
+#cake-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(255, 105, 180, 0.4), rgba(0, 0, 0, 0.3));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding-bottom: 20vh;
+}
+
+.wish-text {
+    font-family: var(--font-heading);
+    color: #fff;
+    font-size: 2.5rem;
+    text-align: center;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 2rem;
+    font-style: italic;
+    animation: fadeInUp 2s ease-out;
+}
+
+.candle-container {
+    width: 100px;
+    height: 150px;
+    margin-bottom: 2rem;
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.candle-container.blown-out {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+}
+
+.flame {
+    filter: drop-shadow(0 0 10px #ff6b6b);
+    transform-origin: center bottom;
+    animation: flicker 0.1s infinite alternate;
+}
+
+@keyframes flicker {
+    from {
+        transform: scale(1) rotate(-1deg);
+    }
+
+    to {
+        transform: scale(1.1) rotate(1deg);
+    }
+}
+
+/* ===== PARTICLES/SPARKLES ===== */
+#particles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.sparkle {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: sparkle-pulse 3s infinite;
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes floating {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sparkle-pulse {
+
+    0%,
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 0.6;
+    }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .cute-sticker {
+        width: 180px;
+        height: 180px;
+    }
+
+    .entry-text {
+        font-size: 1.4rem;
+    }
+
+    .wish-text {
+        font-size: 1.8rem;
+    }
+}
+
+/* ===== BALLOONS ===== */
+#balloons-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+    /* Above video, below overlay */
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    width: 50px;
+    height: 70px;
+    background-color: var(--balloon-color, #ff66a3);
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    box-shadow: inset -10px -10px 0 rgba(0, 0, 0, 0.15);
+    animation: floatUp ease-in forwards;
+    z-index: 10;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid var(--balloon-color, #ff66a3);
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -50px;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) translateX(0) scale(0.8);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh) translateX(20px) scale(1);
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-120vh) translateX(-20px) scale(1.1);
+        opacity: 0;
+    }
+}

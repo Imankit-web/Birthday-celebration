@@ -2,302 +2,52 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Birthday, Anoushka 💖</title>
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;600;700&family=Lato:wght@300;400&display=swap"
-    rel="stylesheet" />
-
-  <!-- External Stylesheet -->
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Little Surprise for You ✨</title>
+  <link rel="stylesheet" href="entry.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Lato:wght@300;400&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-
-
-  <!-- ===== NAVIGATION ===== -->
-  <nav>
-    <a href="#hero">Home</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#special">About Her</a>
-    <a href="#moments">Memories</a>
-    <a href="#letter">Letter</a>
-  </nav>
-
-  <!-- ===== FLOATING PARTICLES ===== -->
   <div id="particles"></div>
 
-  <!-- ===== MUSIC BUTTON ===== -->
-  <button id="music-btn" title="Play / Pause Music">🎵</button>
-  <!--
-    To add music: uncomment the <source> below and set your file path.
-  -->
-  <audio id="bg-music" loop>
-    <source src="audio.mp3" type="audio/mpeg" />
-  </audio>
+  <div class="entry-container">
+    <div class="glow-bg"></div>
 
-  <!-- ===== CONFETTI CANVAS ===== -->
-  <canvas id="confetti-canvas"></canvas>
-
-
-  <!-- ================================================================
-       HERO SECTION
-  ================================================================ -->
-  <section id="hero">
-    <div class="hero-decoration">🌸</div>
-    <div class="hero-decoration">💫</div>
-    <div class="hero-decoration">🌷</div>
-    <div class="hero-decoration">✨</div>
-    <div class="hero-decoration">🦋</div>
-
-    <div class="hero-badge">✨ Today is your day ✨</div>
-
-    <!-- Change "My Dearest!" to her name -->
-    <h1 class="hero-name">Happy Birthday,<br />Anoushka 🎉💖</h1>
-    <p class="hero-title">The world is brighter because you're in it</p>
-    <p class="hero-subtitle">
-      "To someone who makes every ordinary day feel like magic —
-      may this one be as extraordinary as you are."
-    </p>
-
-    <a href="#gallery" class="hero-cta">Explore Your Surprise 💕</a>
-
-    <div class="scroll-hint">
-      <span>scroll</span>
-      <div class="scroll-dot"></div>
-    </div>
-  </section>
-
-
-  <!-- ================================================================
-       PHOTO GALLERY
-       Replace photo-placeholder divs with <img src="photo.jpg" />
-  ================================================================ -->
-  <section id="gallery">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">Our beautiful memories ✨</span>
-        <h2 class="section-title">A Glimpse of Your Radiance 📸</h2>
+    <div class="sticker-wrapper" id="entry-trigger">
+      <div class="sticker">
+        <!-- Cute Bunny SVG Illustration -->
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="100" cy="110" r="45" fill="#FFF" /> <!-- Body -->
+          <circle cx="100" cy="70" r="35" fill="#FFF" /> <!-- Head -->
+          <path d="M75 50 Q60 10 90 40" stroke="#FFF" stroke-width="15" fill="none" stroke-linecap="round" />
+          <!-- Left Ear -->
+          <path d="M125 50 Q140 10 110 40" stroke="#FFF" stroke-width="15" fill="none" stroke-linecap="round" />
+          <!-- Right Ear -->
+          <circle cx="88" cy="65" r="3" fill="#333" /> <!-- Eye -->
+          <circle cx="112" cy="65" r="3" fill="#333" /> <!-- Eye -->
+          <path d="M95 75 Q100 80 105 75" stroke="#FFB7C5" stroke-width="2" fill="none" /> <!-- Nose -->
+          <rect x="85" y="115" width="30" height="25" rx="5" fill="#FFB7C5" /> <!-- Gift Box -->
+          <path d="M100 115 L100 140 M85 127.5 L115 127.5" stroke="#FFF" stroke-width="2" /> <!-- Box Ribbon -->
+        </svg>
       </div>
-
-      <div class="photo-grid" id="photo-grid">
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="smile.jpeg" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Your beautiful smile ✨</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="glowing.jpg" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Always glowing 💕</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="purejoy.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Pure joy 🌟</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="effortless.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Effortlessly you 🌸</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="myfav.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">My favorite person 💖</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="okay.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Okie 👍</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="eyes.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Breath-Taking Eyes 👀</span></div>
-        </div>
-        <div class="photo-card" onclick="openLightbox(this)">
-          <div> <img src="anger.png" /> </div>
-          <div class="photo-overlay"><span class="photo-caption">Adorable Anger 😤</span></div>
-        </div>
-
-      </div>
-
-  </section>
-
-  <!-- Lightbox -->
-  <div id="lightbox">
-    <div id="lightbox-content">
-      <div id="lightbox-img-container"></div>
-      <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+      <p class="click-hint">Click for a surprise 🎁</p>
     </div>
   </div>
 
-
-  <!-- ================================================================
-       WHY YOU ARE SO SPECIAL
-  ================================================================ -->
-  <section id="special">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">written from the heart 💌</span>
-        <h2 class="section-title">Why You Are So Special ✨</h2>
-      </div>
-      <div class="special-grid">
-        <div class="special-card">
-          <div class="card-icon">🌟</div>
-          <h3 class="card-title">Your Kindness</h3>
-          <p class="card-desc">You have a heart so full of warmth, you make everyone around you feel seen, valued, and
-            loved without even trying.</p>
-        </div>
-        <div class="special-card">
-          <div class="card-icon">😊</div>
-          <h3 class="card-title">That Smile of Yours</h3>
-          <p class="card-desc">Your smile is my favorite sight, because it turns ordinary moments into memories I never
-            want to forget.</p>
-        </div>
-        <div class="special-card">
-          <div class="card-icon">💪</div>
-          <h3 class="card-title">Your Strength</h3>
-          <p class="card-desc">You face storms with grace. You bend but never break, and through every challenge, you
-            come out even more beautiful.</p>
-        </div>
-        <div class="special-card">
-          <div class="card-icon">🎨</div>
-          <h3 class="card-title">Your Creativity</h3>
-          <p class="card-desc">You see the world differently — in color, in layers, in poetry — and you have the rare
-            gift of helping others see it that way too.</p>
-        </div>
-        <div class="special-card">
-          <div class="card-icon">🦋</div>
-          <h3 class="card-title">Your Spirit</h3>
-          <p class="card-desc">Free, curious, and wonderfully alive — there's an energy about you that can't be
-            contained, and honestly, it's magnetic.</p>
-        </div>
-        <div class="special-card">
-          <div class="card-icon">💖</div>
-          <h3 class="card-title">Simply Being You</h3>
-          <p class="card-desc">There is no one else in the world quite like you. And that fact alone makes today worth
-            celebrating in the biggest way possible.</p>
-        </div>
-      </div>
+  <div id="loader" class="loader-overlay">
+    <div class="loader-content">
+      <div class="heart-loading">💖</div>
+      <p class="loader-text">Preparing your magic... ✨</p>
     </div>
-  </section>
+  </div>
 
+  <canvas id="confetti-canvas"></canvas>
+  <audio id="pop-sound" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
 
-  <!-- ================================================================
-       OUR SPECIAL MOMENTS (TIMELINE)
-  ================================================================ -->
-  <section id="moments">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">our story 🌸</span>
-        <h2 class="section-title">Our Special Moments 🕰️</h2>
-      </div>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <p class="timeline-date">📅 The Very Beginning</p>
-            <h3 class="timeline-memory">The Day We Met</h3>
-            <p class="timeline-desc">Neither of us knew then just how much that moment would matter. Looking back, it
-              was the beginning of something truly beautiful.</p>
-          </div>
-          <div class="timeline-dot-wrapper">
-            <div class="timeline-dot"></div>
-          </div>
-          <div style="flex:1"></div>
-        </div>
-
-        <div class="timeline-item">
-          <div style="flex:1"></div>
-          <div class="timeline-dot-wrapper">
-            <div class="timeline-dot"></div>
-          </div>
-          <div class="timeline-content">
-            <p class="timeline-date">📅 One Unforgettable Evening</p>
-            <h3 class="timeline-memory">That Conversation</h3>
-            <p class="timeline-desc">We talked until we forgot about time. Those hours felt like minutes. I think that's
-              when I knew you were someone extraordinary.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <p class="timeline-date">📅 The Adventure</p>
-            <h3 class="timeline-memory">When We Got Lost Together</h3>
-            <p class="timeline-desc">Somehow, being lost with you felt better than knowing exactly where I was going.
-              Every wrong turn became the right one.</p>
-          </div>
-          <div class="timeline-dot-wrapper">
-            <div class="timeline-dot"></div>
-          </div>
-          <div style="flex:1"></div>
-        </div>
-
-        <div class="timeline-item">
-          <div style="flex:1"></div>
-          <div class="timeline-dot-wrapper">
-            <div class="timeline-dot"></div>
-          </div>
-          <div class="timeline-content">
-            <p class="timeline-date">📅 A Quiet Moment</p>
-            <h3 class="timeline-memory">When You Were There for Me</h3>
-            <p class="timeline-desc">You didn't say much, but you were there. Steady and warm. That kind of presence is
-              rare and I will never take it for granted.</p>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-content">
-            <p class="timeline-date">📅 Today</p>
-            <h3 class="timeline-memory">Your Birthday 🎂</h3>
-            <p class="timeline-desc">And here we are — celebrating you, the way you deserve. This is just one of many
-              chapters still to come in our beautiful story.</p>
-          </div>
-          <div class="timeline-dot-wrapper">
-            <div class="timeline-dot"></div>
-          </div>
-          <div style="flex:1"></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-
-  <!-- ================================================================
-       SPECIAL LETTER  (edit letterText in script.js)
-  ================================================================ -->
-  <section id="letter">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-tag">just for you 💌</span>
-        <h2 class="section-title">A Letter From My Heart 🖊️</h2>
-      </div>
-      <div class="letter-card">
-        <div class="letter-stamp">💌</div>
-        <p class="letter-date" id="letter-date"></p>
-        <p class="letter-salutation">My Cute Bestie,</p>
-        <p class="letter-body" id="letter-text"></p>
-        <div class="letter-closing">
-          <p>With all the love in my heart,</p>
-          <p class="letter-signature">Ankit 💕</p>
-        </div>
-        <div class="letter-hearts">♡ ♡ ♡ ♡ ♡</div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-  <!-- ===== FOOTER ===== -->
-  <footer>
-    Made with ♡ just for you · Happy Birthday! 🎂
-  </footer>
-
-  <!-- External Script -->
-  <script src="script.js"></script>
-
+  <script src="entry.js"></script>
 </body>
 
 </html>
